@@ -2,8 +2,8 @@
 Juego de futbol de simulación creado con el único objetivo de aprender a programar.
 
 Las tecnologias utilizadas para este proyecto fueron:
-  - Python / DJango REST -
-  - JavaScript / ReactJS / Redux -
+  - Python / DJango REST
+  - JavaScript / ReactJS / Redux
   
 # DISPOSICION DE LAS CARPETAS:
 # 'backend' - Configuraciones basicas de Django
