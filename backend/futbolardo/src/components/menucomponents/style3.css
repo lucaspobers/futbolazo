@@ -1,0 +1,181 @@
+*{
+	box-sizing: border-box;
+	padding: 0px;
+	margin: 0px;
+}
+
+.big-container{
+	padding: 5px;
+	margin: 5px;
+	border: 2px solid #777;
+	display: grid;
+	grid-template-columns: repeat(3, minmax(100px, 2fr));
+	grid-template-rows: 200px, repeat(2, minmax(50px, 1fr));
+	min-height: 97vh;
+	max-height: 97vh;
+	overflow: hidden;
+}
+
+.next-match{
+	margin: 5px;
+	border: 2px solid #777;
+	min-height: 100px;
+}
+
+.game-data{
+	margin: 5px;
+	border: 2px solid #777;
+	grid-column: 2/4;
+}
+
+.menu{
+	margin: 5px;
+	border: 2px solid #777;
+	grid-row: 2/4;
+}
+
+.formacion-container{
+	margin: 5px;
+	border: 2px solid #777;
+	max-height: 24em;
+	min-width: 50em;
+	overflow: hidden;
+	grid-column: 2/4;
+	grid-row: 2/3;
+}
+
+.formacion{
+	/* min-height: 15em; */
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	/* grid-template-rows: repeat(11, 1fr); */
+	justify-items: center;
+	grid-auto-flow: column;
+}
+
+
+.formacion > span{
+	margin: 2px;
+	font-size: smaller;
+}
+
+.formacion:hover{
+	background-color: #777;
+}
+
+.posiciones-liga-container{
+	margin: 5px;
+	border: 2px solid #777;
+	max-height: 23em;
+	overflow: hidden;
+	grid-column: 2/3;
+	grid-row: 3/4;
+}
+
+
+.posiciones-liga{
+	display: grid;
+	grid-template-columns: 9em;
+	box-sizing: content-box;
+	/* grid-template-rows: repeat(6, 1fr); */
+	margin: 5px;
+	/* border: 2px solid #777; */
+	justify-items: center;
+	align-items: center;
+	grid-auto-flow: column;
+}
+
+.posiciones-liga-titulos{
+	display: grid;
+	grid-template-columns: 9em;
+	box-sizing: content-box;
+	margin: 5px;
+	justify-items: center;
+	align-items: center;
+	grid-auto-flow: column;
+}
+
+.posiciones-liga-titulos > span{
+	font-weight: bold;
+	
+}
+
+.posiciones-liga > span{
+	word-spacing: 0.05em;
+	justify-items: center;
+}
+
+.goleadores{
+	margin: 5px;
+	border: 2px solid #777;
+	grid-column: 3/4;
+	grid-row: 3/4;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	justify-items: center;
+
+}
+
+.plantilla-container{
+	margin: 5px;
+	border: 2px solid #777;
+	max-height: 50em;
+	min-width: 50em;
+}
+
+.plantilla-container-titular{
+	display: flex;
+	/* align-items: center; */
+	margin: 5px;
+	border: 2px solid #777;
+	max-height: 50em;
+	min-width: 50em;
+}
+
+.pct-formacion{
+	flex-grow: 1;
+}
+
+.pct-posiciones-requeridas{
+	align-self: auto;
+	min-height: 100%;
+}
+
+.dibujo-tactico{
+	display: flex;
+	margin: 5px;
+	border: 2px solid #777;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Cuando esten todos los links eliminar */
+
+.menu > ul > li {
+	border: 2px solid #777;
+	list-style: none;
+	font-size: 3em;
+	margin: 5px;
+	text-align: center;
+}
+
+.menu > ul > li:hover{
+	background: #777;
+}
+
+/* - - - - - - - - - - - - - - - - - - - */
+
+.menu > ul > a > li {
+	border: 2px solid #777;
+	list-style: none;
+	font-size: 3em;
+	margin: 5px;
+	text-align: center;
+}
+
+.menu > ul > a > li:hover{
+	background: #777;
+}
+
+
+
