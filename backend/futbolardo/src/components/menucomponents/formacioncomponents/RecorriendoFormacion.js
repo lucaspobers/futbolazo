@@ -3,7 +3,8 @@ import Plantel from './Plantel'
 
 export default class RecorriendoFormacion extends Component {
     render() {
-    return (
+    
+        return (
         <div>
             { this.props.jugadores?.map(e =>
                 <Plantel
@@ -15,7 +16,7 @@ export default class RecorriendoFormacion extends Component {
                     pais={e.pais}
                     valoracion={e.valoracion}
                     posicion={e.posicion}
-                    formacion={this.props.formacion}
+                    // formacion={this.props.formacion}
                     />)}
         </div>
     )

@@ -5,6 +5,7 @@ import Login from './components/iniciocomponents/Login'
 import Menu from './components/Menu';
 import Calendario from './components/menucomponents/Calendario';
 import Formacion from './components/menucomponents/Formacion';
+import SimulacionPartido from './components/SimulacionPartido';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/menu" element={<Menu/>}/>
         <Route path="/formacion" element={<Formacion/>}/>
         <Route path="/calendario" element={<Calendario/>}/>
+        <Route path="/partido" element={<SimulacionPartido/>}/>
       </Routes>
     </BrowserRouter>
   );

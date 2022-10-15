@@ -128,7 +128,7 @@ let sliceTitulares = createSlice({
             let nuevardo = _.without(actualTitular, actualTitular[index])
             nuevardo.splice(index, 0, jugador)
 
-            console.log(nuevardo)
+            // console.log(nuevardo)
             // state.equipoTitular = nuevardo
 
         },

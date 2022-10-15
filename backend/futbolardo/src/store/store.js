@@ -12,10 +12,11 @@ const persistConfig = {
 };
 
 const persistedTitulares = persistReducer(persistConfig, sliceTitulares);
+const persistedFecha = persistReducer(persistConfig, sliceFecha);
 
 const store = configureStore({
     reducer: {
-        fecha: sliceFecha,
+        fecha: persistedFecha,
         jugadores: persistedTitulares,
         // jugadores: sliceTitulares,
     },

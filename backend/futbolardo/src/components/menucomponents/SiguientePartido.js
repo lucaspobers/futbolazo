@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import './style3.css'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getRival, getEquipo } from '../../store/slices/Fecha/sliceFecha';
 var _ = require('underscore');
 
 const SiguientePartido = () => {
     
   let fecha = useSelector(state => state.fecha.fecha);
+  const dispatch = useDispatch()
   
   let fecha_corriente = fecha - 1
 
@@ -47,6 +49,10 @@ const SiguientePartido = () => {
       rival = partidos[i].local
     }
   }
+
+  // Envio al state el rival y el equipo
+  dispatch(getEquipo(mi_equipo_limpio))
+  dispatch(getRival(rival))
   
   return (
     <div className='next-match'>
