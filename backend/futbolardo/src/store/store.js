@@ -1,6 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import sliceTitulares from './slices/EquipoTitular';
 import sliceFecha from './slices/Fecha/sliceFecha';
+import sliceEstadisticas from './slices/Estadisticas/sliceEstadisticas';
+import slicePosiciones from './slices/TablaPosiciones/slicePosiciones';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
@@ -13,12 +15,15 @@ const persistConfig = {
 
 const persistedTitulares = persistReducer(persistConfig, sliceTitulares);
 const persistedFecha = persistReducer(persistConfig, sliceFecha);
+const persistedEstadisticas = persistReducer(persistConfig, sliceEstadisticas);
+const persistedPosiciones = persistReducer(persistConfig, slicePosiciones);
 
 const store = configureStore({
     reducer: {
         fecha: persistedFecha,
         jugadores: persistedTitulares,
-        // jugadores: sliceTitulares,
+        estadisticas: persistedEstadisticas,
+        posiciones: persistedPosiciones
     },
     devTools: process.env.NODE_ENV !== 'production',
     middleware: [thunk]
@@ -33,6 +38,8 @@ export default store
     el state se mantenga
 
     persisteReducer - Le pasamos la config + el reducer que quermos que se mantenga.
+
+    redux-thunk - Es un middleware que nos permite hacer dispatch de funciones asincronas
 
 
 */       

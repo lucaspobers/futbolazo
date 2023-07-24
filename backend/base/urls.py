@@ -1,6 +1,6 @@
 from django.urls import path
 from base.api.views import user_api_view, user_detail_api_view
-from base.views import plantel_equipo, armado_liga, calendario
+from base.views import plantel_equipo, poblar_rivales ,armado_liga, calendario, planteles_rivales
 from django.views.generic import TemplateView
 
 urlpatterns = [
@@ -9,6 +9,8 @@ urlpatterns = [
     path('equipo/', plantel_equipo, name = 'Plantel Equipo'),
     path('liga-data/', armado_liga, name = 'Armado Liga'),
     path('calendario-data/', calendario, name = 'Armado Liga'),
+    path('rivales_data/', poblar_rivales, name = 'Poblar Rivales'),
+    path('planteles_rivales/', planteles_rivales, name = 'Planteles Rivales'),
     
     path('', TemplateView.as_view(template_name='index.html')),
     path('menu/', TemplateView.as_view(template_name='index.html')),

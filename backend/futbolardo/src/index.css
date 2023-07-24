@@ -1,13 +1,51 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+
+.botones-menu{
+    @apply flex flex-row justify-center items-center bg-green-500 hover:bg-green-600 active:bg-green-700 text-white font-bold py-2 px-4 rounded transition duration-300 transform hover:scale-95
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.bg-components-menu{
+    @apply bg-white bg-opacity-80 rounded-md shadow-md font-medium;
 }
+
+.contenedor-partido{
+    @apply bg-components-menu border-2 border-black col-span-2 grid grid-cols-2 max-w-[50em];
+}
+
+.botones-f-on{
+    @apply bg-green-500 hover:bg-green-600 text-white font-bold focus:ring-4 focus:ring-black transition-all duration-200 ease-in-out px-4 py-2 rounded-md;
+}
+
+.botones-f-off{
+    @apply bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 m-1 rounded-md;
+}
+
+.pre_animacion_partido{
+    @apply m-2 max-h-7 absolute
+}
+
+.animacion_partido{
+    @apply m-2 max-h-7 absolute translate-x-[36em] duration-[1000ms] ease-linear
+}
+/* Era 5000 */
+
+.reversa{
+    @apply m-2 max-h-7 absolute translate-x-[0] duration-[5000ms] 
+}
+
+.renglon{
+    @apply my-0 py-0 rounded-md border-b border-gray-50 border-opacity-50 ;
+}
+
+.color1{
+    @apply bg-white ;
+}
+
+.color2{
+    @apply bg-[#f4f4f4];
+}
+
+
+@tailwind utilities;
+

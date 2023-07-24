@@ -4,7 +4,7 @@
 	margin: 0px;
 }
 
-.big-container{
+/* .big-container{
 	padding: 5px;
 	margin: 5px;
 	border: 2px solid #777;
@@ -14,44 +14,43 @@
 	min-height: 97vh;
 	max-height: 97vh;
 	overflow: hidden;
-}
+} */
 
-.next-match{
+/* .next-match{
 	margin: 5px;
 	border: 2px solid #777;
 	min-height: 100px;
-}
+} */
 
-.game-data{
+/* .game-data{
 	margin: 5px;
 	border: 2px solid #777;
 	grid-column: 2/4;
-}
+} */
 
-.menu{
+/* .menu{
 	margin: 5px;
 	border: 2px solid #777;
 	grid-row: 2/4;
-}
+} */
 
 .formacion-container{
 	margin: 5px;
 	border: 2px solid #777;
 	max-height: 24em;
 	min-width: 50em;
-	overflow: hidden;
+	/* overflow: hidden; */
 	grid-column: 2/4;
 	grid-row: 2/3;
 }
 
+/* 
 .formacion{
-	/* min-height: 15em; */
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
-	/* grid-template-rows: repeat(11, 1fr); */
 	justify-items: center;
 	grid-auto-flow: column;
-}
+} */
 
 
 .formacion > span{
@@ -63,29 +62,18 @@
 	background-color: #777;
 }
 
-.posiciones-liga-container{
+/* POSICIONES LIGA */
+
+/* .posiciones-liga-container{
 	margin: 5px;
 	border: 2px solid #777;
 	max-height: 23em;
 	overflow: hidden;
 	grid-column: 2/3;
 	grid-row: 3/4;
-}
+} */
 
-
-.posiciones-liga{
-	display: grid;
-	grid-template-columns: 9em;
-	box-sizing: content-box;
-	/* grid-template-rows: repeat(6, 1fr); */
-	margin: 5px;
-	/* border: 2px solid #777; */
-	justify-items: center;
-	align-items: center;
-	grid-auto-flow: column;
-}
-
-.posiciones-liga-titulos{
+/* .posiciones-liga{
 	display: grid;
 	grid-template-columns: 9em;
 	box-sizing: content-box;
@@ -93,9 +81,19 @@
 	justify-items: center;
 	align-items: center;
 	grid-auto-flow: column;
-}
+} */
 
-.posiciones-liga-titulos > span{
+/* .posiciones-liga-titulos{
+	display: grid;
+	grid-template-columns: 9em;
+	box-sizing: content-box;
+	margin: 5px;
+	justify-items: center;
+	align-items: center;
+	grid-auto-flow: column;
+} */
+
+/* .posiciones-liga-titulos > span{
 	font-weight: bold;
 	
 }
@@ -103,25 +101,50 @@
 .posiciones-liga > span{
 	word-spacing: 0.05em;
 	justify-items: center;
+} */
+
+/* TABLA GOLEADORES */
+
+/* .goleadores-container{
+	margin: 5px;
+	border: 2px solid #777;
+	max-height: 23em;
+	overflow: hidden;
+	grid-column: 3/4;
+	grid-row: 3/4;
+}
+
+.goleadores-titulos{
+	display: grid;
+	grid-template-columns: 9em;
+	box-sizing: content-box;
+	margin: 5px;
+	justify-items: center;
+	align-items: center;
+	grid-auto-flow: column;
+}
+
+.goleadores-titulos > span{
+	font-weight: bold;
+	
 }
 
 .goleadores{
-	margin: 5px;
-	border: 2px solid #777;
-	grid-column: 3/4;
-	grid-row: 3/4;
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: 9em;
+	box-sizing: content-box;
+	margin: 5px;
 	justify-items: center;
+	align-items: center;
+	grid-auto-flow: column;
+} */
 
-}
-
-.plantilla-container{
+/* .plantilla-container{
 	margin: 5px;
 	border: 2px solid #777;
 	max-height: 50em;
 	min-width: 50em;
-}
+} */
 
 .plantilla-container-titular{
 	display: flex;
@@ -162,6 +185,11 @@
 .menu > ul > li:hover{
 	background: #777;
 }
+
+.menu > :hover{
+	background: #777;
+}
+
 
 /* - - - - - - - - - - - - - - - - - - - */
 

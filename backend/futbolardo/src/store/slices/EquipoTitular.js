@@ -16,8 +16,7 @@ let sliceTitulares = createSlice({
                 state.equipoSuplente = action.payload.suplentes
                 state.firstSet = true
             }
-            // state.equipoTitular = action.payload.titulares
-            // state.equipoSuplente = action.payload.suplentes
+
         },
         cambioJugador: (state, action) => {
             // Recibe los ID de los jugadores a cambiar

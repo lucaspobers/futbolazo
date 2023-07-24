@@ -2,13 +2,15 @@ from turtle import xcor
 from unittest import result
 from django.db.models import F
 from matplotlib.font_manager import json_dump
-from base.models import Jugadores, Equipos, Calendario
+from base.models import Jugadores, Equipos, Jugadores_Rivales
 from rest_framework.decorators import api_view, parser_classes
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
-from base.serializers import SerializadorPlantel, SerializadorEquipos, SerializadorCalendario, SerializadorFecha
+from base.serializers import SerializadorPlantel, SerializadorEquipos, SerializadorCalendario, SerializadorFecha, SerializadorRivales
 import random
 from collections import OrderedDict
+from django.shortcuts import render
+import json
 
 
 @api_view(['GET'])
@@ -35,6 +37,90 @@ def plantel_equipo(request):
 
         
         return Response(equipo_armado.data)
+    
+
+nombres= ['Juan', 'Santiago', 'Mateo', 'Lucas', 'Joaquín', 'Lautaro', 'Benjamín', 'Bautista', 'Facundo', 'Tomás',
+                  'Agustín', 'Thiago', 'Maximiliano', 'Nicolás', 'Emiliano', 'Iván', 'Manuel', 'Alejandro', 'Leonardo',
+                  'Gonzalo', 'Bruno', 'Federico', 'Diego', 'Javier', 'Cristian', 'Juan Pablo', 'Hernán', 'Pablo',
+                  'Adrián', 'Francisco', 'Enzo', 'Sebastián', 'Ramiro', 'Ezequiel', 'Rodrigo', 'Luciano', 'Mauricio',
+                  'Jerónimo', 'Gabriel', 'Lisandro', 'Alan', 'Martín', 'Marcos', 'Mariano', 'Leandro', 'David', 'Lucas',
+                  'Luis', 'José', 'Guillermo', 'Roberto', 'Andrés', 'Marcelo', 'Matías', 'Lucio', 'Nicolás', 'Matías',
+                  'Pedro', 'Jorge', 'Alejandro', 'Fernando', 'Julián', 'Sergio', 'Iván', 'Nahuel', 'Gastón', 'Mariano',
+                  'Bruno', 'Miguel', 'Juan Manuel', 'Lorenzo', 'Tomás', 'Juan José', 'Agustín', 'Juan Ignacio',
+                  'Valentín', 'Ariel', 'Julián', 'Emanuel', 'Leandro', 'Gustavo', 'Alberto', 'Cristian', 'Ezequiel',
+                  'Alexis', 'Nicolás', 'Joaquín', 'Máximo', 'Braian', 'Carlos', 'Matías', 'José Luis', 'César',
+                  'Ignacio', 'Gonzalo', 'Javier', 'Renato', 'Alex', 'Emmanuel', 'Jesús', 'Leonardo', 'Víctor',
+                  'Esteban', 'Tomás', 'Emiliano', 'Germán', 'Mauro', 'Julián', 'Juan Cruz', 'Juan Martín', 'Juan Manuel',
+                  'Federico', 'Gonzalo', 'Luis', 'Darío', 'Gustavo', 'Roberto', 'Maximiliano', 'Matías', 'Jorge Luis',
+                  'Jorge', 'Agustín', 'Pablo', 'Miguel Ángel', 'Marcelo', 'Héctor', 'Franco', 'José María', 'Fabián',
+                  'Juan Carlos', 'Walter', 'Lucas', 'Ricardo', 'Fernando', 'Adrián', 'Mauricio', 'Claudio', 'Diego',
+                  'Rodrigo', 'Ezequiel', 'Luciano', 'Lisandro', 'Gabriel', 'Eduardo', 'Nicolás', 'Nahuel', 'Damián',
+                  'Germán', 'Gustavo', 'Lautaro', 'Santiago', 'Facundo', 'Martín', 'Joaquín', 'Mauro', 'Emmanuel',
+                  'Bautista']
+
+apellidos = ['González', 'Rodríguez', 'García', 'Fernández', 'López', 'Martínez', 'Pérez', 'Gómez', 'Sánchez', 'Díaz', 'Romero', 'Torres', 'Flores', 'Alvarez', 'Ortiz', 'Ramirez', 'Acosta', 'Castro', 'Benítez', 'Medina', 'Suárez', 'Cáceres', 'Ríos', 'Vargas', 'Arias', 'Figueroa', 'Velázquez', 'Sosa', 'Aguilar', 'Giménez', 'Morales', 'Romero', 'Navarro', 'Luna', 'Rojas', 'Pereyra', 'Quiroga', 'Maldonado', 'Cabrera', 'Godoy', 'Vega', 'Franco', 'Núñez', 'Toledo', 'Pereira', 'Toledo', 'Barrios', 'Cardozo', 'Peralta', 'Álvarez','Ojeda', 'Correa', 'Rivero', 'Molina', 'Villalba', 'Yañez', 'Vera', 'Aguirre', 'Castillo', 'Maidana','Farías', 'Soria', 'Aguirre', 'Herrera', 'Duarte', 'Oviedo', 'Gutiérrez', 'Córdoba', 'Martínez', 'Giménez', 'Leiva', 'Duarte', 'Miranda', 'Reynoso', 'Barrios', 'Méndez', 'Soria', 'Cortez', 'Alaniz', 'Zárate', 'Giménez', 'Ríos', 'Lescano', 'Barreto', 'Ferreyra', 'Mercado', 'Olivera', 'Gauna', 'Herrera', 'Ferreira', 'Ponce', 'Nieto', 'Gómez', 'Pereyra', 'Aguilar', 'Ávalos', 'Mansilla', 'Páez', 'Zelaya','Bazán']
+
+
+@api_view(['GET', 'POST'])
+def poblar_rivales(request):
+    
+    nombres_r = []
+    apellidos_r = []
+    
+    
+    for i in range (1000):
+        nombre = random.choice(nombres)
+        apellido = random.choice(apellidos)
+        nombres_r.append(nombre)
+        apellidos_r.append(apellido)
+        
+    posiciones = ['Arquero', 'Defensor', 'Mediocampista', 'Delantero']
+    paises = ['Argentina'] * 750 + ['Chile'] * 50 + ['Uruguay'] * 50 + ['Colombia'] * 50 + ['Paraguay'] * 50 + ['Ecuador'] * 50
+    
+    num_registros = Jugadores_Rivales.objects.count()
+    
+    if num_registros < 1000:
+        for i in range(len(nombres_r)):
+            persona = Jugadores_Rivales(nombre=nombres_r[i], apellido=apellidos_r[i])
+            persona.pais = random.choice(paises)
+            persona.valoracion = random.randint(63, 67)
+            persona.posicion = random.choice(posiciones)
+            persona.save()
+    else:
+        pass
+    
+    bbdd_rivales = SerializadorRivales(Jugadores_Rivales.objects.all(), many=True)
+    
+    return Response(bbdd_rivales.data)    
+
+# Por el momento tengo que entrar manualmente a la url para que se ejecute la función
+# Habria que 'dispararla' automaticamente en algun momento
+
+
+
+@api_view(['GET'])
+def planteles_rivales(request):
+    random.seed(1234)
+    
+    equipos_liga = Equipos.objects.exclude(nombre_equipo='Ramos Mejia').order_by('puntos_equipo')[:20]
+    
+    diccionario_equipos = {}
+    
+    for x in equipos_liga:
+        arqueros = Jugadores_Rivales.arqueros_objects.all().order_by('?')[:3]
+        defensores = Jugadores_Rivales.defensores_objects.all().order_by('?')[:9]
+        mediocampistas = Jugadores_Rivales.mediocampistas_objects.all().order_by('?')[:9]
+        delanteros = Jugadores_Rivales.delanteros_objects.all().order_by('?')[:6]
+    
+        equipo = arqueros | defensores | mediocampistas | delanteros
+    
+        diccionario_equipos[x.nombre_equipo] = SerializadorRivales(equipo, many=True).data
+        
+    return Response(diccionario_equipos)
+
+# De igual manera que en JS cada vez que actualizo los rivales tienen nuevos planteles
+    
+    
     
 @api_view(['GET'])
 def calendario(request):
@@ -127,6 +213,8 @@ def calendario(request):
                                        
     return Response(superior)
 
+
+
 @api_view(['GET'])
 def armado_liga(request):
     if request.method == 'GET':
@@ -189,3 +277,6 @@ def asignar_jugadores(gk_var, df_var, mc_var, dc_var):
 
 	var7=random.randrange(1,6)
 	var8=var7 + dc_var
+ 
+""" RANDOM.SEED - la selección aleatoria de jugadores se realizará siempre con la misma semilla 
+y devolverá los mismos resultados para un mismo conjunto de datos """

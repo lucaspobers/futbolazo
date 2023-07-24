@@ -7,6 +7,9 @@ var _ = require('underscore');
 const SiguientePartido = () => {
     
   let fecha = useSelector(state => state.fecha.fecha);
+  let valoracion = useSelector(state => state.fecha.valoracion_miEquipo)
+  let dibujoTactico = useSelector(state => state.fecha.dibujo_formacion)
+
   const dispatch = useDispatch()
   
   let fecha_corriente = fecha - 1
@@ -50,16 +53,20 @@ const SiguientePartido = () => {
     }
   }
 
+
   // Envio al state el rival y el equipo
   dispatch(getEquipo(mi_equipo_limpio))
   dispatch(getRival(rival))
   
   return (
-    <div className='next-match'>
-      <span>Siguiente Partido</span><br/>
-      <span>{mi_equipo} vs {rival}</span><br/>
-      <span>Fecha {fecha}</span> 
+    <div className=' bg-components-menu flex flex-row m-2 p-2 border-2 border-black justify-around col-start-2 col-span-2 min-w-max items-center'>
+      <span >{mi_equipo} vs {rival}</span>
+      <span >Fecha {fecha}</span> 
+      <span>Valoracion Equipo {valoracion}</span>
+      <span>Dibujo tactico {dibujoTactico}</span>
+      <span>Moral del equipo: Buena</span>
     </div>
+    
   )
 }
 
@@ -77,4 +84,7 @@ export default SiguientePartido
   fechas - Tenemos varias variables de fecha 'fecha_corriente'  y 'fecha_actual. 
              * La primera sirve para recorrer la data de la API
              * La segunda define la primera y controla el tiempo.
+  
+  PROBLEMA - Yo puse el ´en_uso' de manera manual, por lo tanto si esto no lo hace el usuario
+              no va a funcionar. En un futuro tengo que actualizarlo.
 */

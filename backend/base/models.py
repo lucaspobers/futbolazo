@@ -55,6 +55,7 @@ class Jugadores(models.Model):
 	fisico=models.IntegerField(verbose_name="Fisico", blank=True, null=True)
 	goles=models.IntegerField(verbose_name="Goles", default=0)
 	titular=models.BooleanField(verbose_name='Titular', blank=True, null=True)
+	forma=models.CharField(max_length=15, verbose_name="Forma", blank=True, null=True)
  
 	objects = models.Manager()
 	
@@ -62,7 +63,24 @@ class Jugadores(models.Model):
 	defensores_objects = DefensorManager()
 	mediocampistas_objects = MediocampistaManager()
 	delanteros_objects = DelanteroManager()
-
+ 
+class Jugadores_Rivales(models.Model):
+	nombre = models.CharField(max_length=15, verbose_name="Nombre")
+	apellido = models.CharField(max_length=25, verbose_name="Apellido")
+	pais = models.CharField(max_length=15, verbose_name="Pais")
+	valoracion = models.IntegerField(verbose_name="Valoracion")
+	posicion = models.CharField(max_length=15, verbose_name='Posicion')
+	goles = models.IntegerField(verbose_name="Goles", default=0)
+	titular = models.BooleanField(verbose_name='Titular', blank=True, null=True)
+	forma = models.CharField(max_length=15, verbose_name="Forma", blank=True, null=True)
+ 
+	objects = models.Manager()
+	
+	arqueros_objects = ArquerosManager()
+	defensores_objects = DefensorManager()
+	mediocampistas_objects = MediocampistaManager()
+	delanteros_objects = DelanteroManager()
+        
 class Equipos(models.Model):
 	def __str__(self):
 		return f"{self.nombre_equipo}"

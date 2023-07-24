@@ -40,7 +40,6 @@ let getJugadores = (data) => {
     return titulares, suplentes
 }
 
-
 export const titularesThunk = () => {
     return async ( dispatch, getState ) => { 
         const resp = await fetch('http://localhost:8000/equipo/')
@@ -59,7 +58,7 @@ export const titularesThunk = () => {
 /* 
     1 - Como React ejecuta las acciones dos veces, en la segunda ejecucion del thunk se vuelve
     a realizar el filtro de los jugadores, por lo que se vuelven a cargar los datos MAL. El IF 
-    lo soluciona pero debe haber alguna manera mas idonea de hacerlo.
+    lo soluciona pero debe haber alguna manera mas idonea de hacerlo. (Elmine la doble ejecucion)
 
 
     */

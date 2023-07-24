@@ -10,7 +10,8 @@ const FormacionMenu = () => {
 
   // Traemos del state la formacion titular
   let titulares = useSelector ((state) => state.jugadores.equipoTitular)
-
+  let valoracion = useSelector ((state) => state.fecha.valoracion_miEquipo)
+  
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -50,11 +51,15 @@ const FormacionMenu = () => {
     }
   }
   
-  // La mandamos la valoracion a la store
-  dispatch(valoracionP1(valoracion_general))
+  // Solo si en el state no hay valoracion, la seteamos
+  if (valoracion === undefined || valoracion === NaN) {
+    dispatch(valoracionP1(valoracion_general))
+  }
+
+
 
   return (
-    <div className='plantilla-container'>
+    <div className='bg-components-menu m-2 col-span-2 min-w-max border-2 border-black'>
       <RecorriendoFormacion jugadores={titulares}/>
     </div>
   )
