@@ -23,7 +23,3 @@ window.localStorage.clear()
 
 export default Menu
 
-/*
-  GRID ROWS - Tengo que resolver para que se adapte correctamente al tamaño de la pantalla
-
- */
